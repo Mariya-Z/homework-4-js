@@ -39,19 +39,13 @@ newArray[4](); // should return 50
 
 function sum(){
   let result = 0;
-/*  let summary = [];
-  if (summary.length == 0){
-      for (let j = 0; j < arguments.length; ++j){
-      summary[j] = arguments[j];
-    }
-  }
-  if (summary.length > 1)
-  {
-    result += summary.pop() + sum(summary);
-  }*/
+  let summary = [].slice.call(arguments);
 
-  for (let i = 0; i < arguments.length; ++i){
-    result += arguments[i];
+  if (summary.length == 0){
+      return result;
+  }
+  else {
+  result = summary[0] + sum.apply(null, summary.slice(1))
   }
   return result;
 }
